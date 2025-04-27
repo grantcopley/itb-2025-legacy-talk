@@ -18,9 +18,7 @@
 
     <!--- Nested mess: conditionals inside loops inside another query --->
     <cfif rc.showOrders EQ 1>
-        <cfquery name="getOrders">
-            SELECT * FROM orders WHERE userID = <cfqueryparam value="#rc.userID#" cfsqltype="cf_sql_integer">
-        </cfquery>
+        <cfset getOrders = userService.getUserOrders( rc.userID )>
 
         <h2>Order History</h2>
         <ul>

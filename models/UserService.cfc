@@ -11,4 +11,15 @@
         <cfreturn result>
     </cffunction>
 
+    <cffunction name="getUserOrders" access="public" returntype="query" output="false">
+        <cfargument name="userID" type="numeric" required="true">
+        <cfset var result = "">
+        
+        <cfquery name="result">
+            SELECT * FROM orders WHERE userID = <cfqueryparam value="#arguments.userID#" cfsqltype="cf_sql_integer">
+        </cfquery>
+        
+        <cfreturn result>
+    </cffunction>
+
 </cfcomponent>
