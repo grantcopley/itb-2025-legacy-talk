@@ -1,11 +1,11 @@
 <!--- badView.cfm (pure legacy horror) --->
 <cfoutput>
-<cfparam name="url.userID" default="1">
-<cfparam name="url.showOrders" default="1">
+<cfparam name="rc.userID" default="1">
+<cfparam name="rc.showOrders" default="1">
 
 <!--- Query jammed inside the view with SQL Injection vulnerability --->
 <cfquery name="getUserInfo">
-    SELECT * FROM users WHERE id = #url.userID#
+    SELECT * FROM users WHERE id = #rc.userID#
 </cfquery>
 
 <cfloop query="getUserInfo">
@@ -17,9 +17,9 @@
     </cfif>
 
     <!--- Nested mess: conditionals inside loops inside another query --->
-    <cfif url.showOrders EQ 1>
+    <cfif rc.showOrders EQ 1>
         <cfquery name="getOrders">
-            SELECT * FROM orders WHERE userID = #url.userID#
+            SELECT * FROM orders WHERE userID = #rc.userID#
         </cfquery>
 
         <h2>Order History</h2>
