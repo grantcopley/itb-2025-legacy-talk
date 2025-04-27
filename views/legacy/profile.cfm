@@ -32,10 +32,8 @@
                 </cfif>
 
                 <!--- Another query inside a loop inside a query --->
-                <cfquery name="getOrderItems">
-                    SELECT * FROM order_items WHERE orderID = <cfqueryparam value="#orderID#" cfsqltype="cf_sql_integer">
-                </cfquery>
-
+                <cfset getOrderItems = userService.getOrderItems( orderID )>
+ 
                 <ul>
                 <cfloop query="getOrderItems">
                     <li>#itemName# x #quantity# at $#price# each</li>

@@ -51,6 +51,13 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/root" {
 				expect( result.orderTotal ).toBe( 250 );
 			} );
 
+			it( "can get order items", function(){
+				var result = userService.getOrderItems( 1 );
+				expect( isQuery( result ) ).toBeTrue();
+				expect( result.itemName ).toBe( "Hat" );
+				expect( result.price ).toBe( 25 );
+			} );
+
 		} );
 	}
 

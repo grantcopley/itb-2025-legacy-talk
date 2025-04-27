@@ -22,4 +22,15 @@
         <cfreturn result>
     </cffunction>
 
+    <cffunction name="getOrderItems" access="public" returntype="query" output="false">
+        <cfargument name="orderID" type="numeric" required="true">
+        <cfset var result = "">
+       
+        <cfquery name="result">
+            SELECT * FROM order_items WHERE orderID = <cfqueryparam value="#arguments.orderID#" cfsqltype="cf_sql_integer">
+        </cfquery>
+        
+        <cfreturn result>
+    </cffunction>
+
 </cfcomponent>
