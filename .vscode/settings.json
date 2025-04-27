@@ -10,5 +10,6 @@
 			"directoryPath": "./testbox",
 			"isPhysicalDirectoryPath" :false
 		}
-	]
+	],
+	"testbox.runnerUrl": "http://localhost:55474/tests/runner.cfm"
 }
