@@ -3,10 +3,10 @@
 <cfparam name="rc.userID" default="1">
 <cfparam name="rc.showOrders" default="1">
 
+<cfset userService = getInstance( "UserService" )>
+
 <!--- Query jammed inside the view with SQL Injection vulnerability --->
-<cfquery name="getUserInfo">
-    SELECT * FROM users WHERE id = <cfqueryparam value="#rc.userID#" cfsqltype="cf_sql_integer">
-</cfquery>
+<cfset getUserInfo = userService.getUserInfo( rc.userID )>
 
 <cfloop query="getUserInfo">
     <h1>Welcome, #firstName# #lastName#</h1>
