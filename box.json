@@ -1,0 +1,12 @@
+{
+    "dependencies":{
+        "testbox":"^6.3.1+15"
+    },
+    "installPaths":{
+        "testbox":"testbox/"
+    },
+    "location":"forgeboxStorage",
+    "name":".",
+    "slug":"",
+    "version":"1.0.0"
+}

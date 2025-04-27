@@ -1,0 +1,28 @@
+{
+    "name":"itb-2025-legacy-talk@1",
+    "app":{
+        "serverHomeDirectory":".engine/boxlang",
+        "cfengine":"boxlang@be",
+        "libDirs":"lib/java"
+    },
+    "web":{
+        "http":{
+            "port":"55474"
+        },
+        "rewrites":{
+            "enable":"true"
+        }
+    },
+    "openBrowser":"false",
+    "fusionreactor":{
+        "enable":false
+    },
+    "jvm":{
+        "heapSize":"1024",
+        "javaVersion":"openjdk21_jre",
+        "args":"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8888"
+    },
+    "scripts":{
+        "onServerInitialInstall":"install bx-compat-cfml -noSave && install bx-mysql --noSave"
+    }
+}
