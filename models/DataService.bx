@@ -1,0 +1,29 @@
+class {
+
+    function toArray( any data ) {
+        if ( isArray( data ) ) {
+            return data;
+        } else if ( isQuery( data ) ) {
+            return data.reduce( function( agg, row ) {
+                agg.append( row );
+                return agg;
+            }, [] );
+        } else {
+            return [ data ];
+        }
+    }
+
+    function toStruct( any data ) {
+        if ( isStruct( data ) ) {
+            return data;
+        } else if ( isQuery( data ) && data.recordCount == 1 ) {
+            return data.reduce( function( agg, row ) {
+                agg.append( row );
+                return agg;
+            }, {} );
+        } else {
+            throw( "DataService.toStruct() only accepts Struct or Query" );
+        }
+    }
+
+}
