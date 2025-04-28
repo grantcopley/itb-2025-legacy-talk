@@ -62,6 +62,19 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/root" {
 					expect( result[1].items[1].itemName ).toBe( "Hat" );
 					expect( result[1].items[1].price ).toBe( 25 );
 				} );
+
+				it( "flags orders with an order total greater than 500 as a big order", function(){
+					var result = userService.getUserOrders( 1 );
+					expect( isArray( result ) ).toBeTrue();
+
+					result.each( function( order ){
+						if( order.orderTotal > 500 ){
+							expect( order.isBigOrder ).toBeTrue();
+						} else {
+							expect( order.isBigOrder ).toBeFalse();
+						}
+					} );
+				} );
 			} );
 
 

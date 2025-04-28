@@ -29,7 +29,7 @@
             Order #order.orderID# - $#order.orderTotal#
             
             <!--- Magic number without explanation --->
-            <cfif order.orderTotal GT 500>
+            <cfif order.isBigOrder>
                 <strong>(Big Order!)</strong>
             </cfif>
 

@@ -1,4 +1,4 @@
-class singleton {
+class {
 
     property name="dataService" inject="DataService";
 
@@ -26,7 +26,10 @@ class singleton {
             { userID: userID }
         );
 
-        result = dataService.toArray(result);
+        result = dataService.toArray(result).map( function( order ) {
+            order.isBigOrder = order.orderTotal > 500;
+            return order;
+        } );
 
         if ( include.len() ) {
             if ( include.findNoCase( "items" ) ) {
