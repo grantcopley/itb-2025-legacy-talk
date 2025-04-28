@@ -20,12 +20,22 @@ class singleton {
         return dataService.toArray(result);
     }
 
-    function getUserOrders(userID) {
+    function getUserOrders( numeric userID, array include = [] ) {
         var result = queryExecute(
             "SELECT * FROM orders WHERE userID = :userID",
             { userID: userID }
         );
 
-        return dataService.toArray(result);
+        result = dataService.toArray(result);
+
+        if ( include.len() ) {
+            if ( include.findNoCase( "items" ) ) {
+                result.map( function( order ) {
+                    order[ "items" ] = getOrderItems( order.orderID );
+                } );
+            }
+        }
+
+        return result;
     }
 }

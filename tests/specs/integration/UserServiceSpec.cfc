@@ -44,12 +44,26 @@ component extends="coldbox.system.testing.BaseTestCase" appMapping="/root" {
 				expect( result.firstname ).toBe( "Grant" );
 			} );
 
-			it( "can get user orders", function(){
-				var result = userService.getUserOrders( 1 );
-				expect( isArray( result ) ).toBeTrue();
-				expect( result[1].orderID ).toBe( 1 );
-				expect( result[1].orderTotal ).toBe( 250 );
+			describe( "getUserOrders", function() {
+
+				it( "can get user orders", function(){
+					var result = userService.getUserOrders( 1 );
+					expect( isArray( result ) ).toBeTrue();
+					expect( result[1].orderID ).toBe( 1 );
+					expect( result[1].orderTotal ).toBe( 250 );
+				} );
+
+				it( "can get user orders with items included ", function(){
+					var result = userService.getUserOrders( userId=1, include=["items"] );
+					expect( isArray( result ) ).toBeTrue();
+					expect( result[1].orderID ).toBe( 1 );
+					expect( result[1].orderTotal ).toBe( 250 );
+					expect( isArray( result[1].items ) ).toBeTrue();
+					expect( result[1].items[1].itemName ).toBe( "Hat" );
+					expect( result[1].items[1].price ).toBe( 25 );
+				} );
 			} );
+
 
 			it( "can get order items", function(){
 				var result = userService.getOrderItems( 1 );

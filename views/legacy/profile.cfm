@@ -18,7 +18,7 @@
 
 <!--- Nested mess: conditionals inside loops inside another query --->
 <cfif rc.showOrders EQ 1>
-    <cfset getOrders = userService.getUserOrders( rc.userID )>
+    <cfset getOrders = userService.getUserOrders( userID=rc.userID, include=["items"] )>
 
     <h2>Order History</h2>
     <ul>
@@ -31,11 +31,8 @@
                 <strong>(Big Order!)</strong>
             </cfif>
 
-            <!--- Another query inside a loop inside a query --->
-            <cfset getOrderItems = userService.getOrderItems( order.orderID )>
-
             <ul>
-            <cfloop array="#getOrderItems#" index="item">
+            <cfloop array="#order.items#" index="item">
                 <li>#item.itemName# x #item.quantity# at $#item.price# each</li>
             </cfloop>
             </ul>
