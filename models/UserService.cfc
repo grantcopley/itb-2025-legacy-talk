@@ -1,26 +1,22 @@
-<cfcomponent>
+component {
+    function getUserInfo(userID) {
+        return queryExecute(
+            "SELECT * FROM users WHERE id = :userID",
+            { userID: userID }
+        );
+    }
 
-    <cfscript>
-        function getUserInfo(userID) {
-            return queryExecute(
-                "SELECT * FROM users WHERE id = :userID",
-                { userID: userID }
-            );
-        }
+    function getOrderItems(orderID) {
+        return queryExecute(
+            "SELECT * FROM order_items WHERE orderID = :orderID",
+            { orderID: orderID }
+        );
+    }
 
-        function getOrderItems(orderID) {
-            return queryExecute(
-                "SELECT * FROM order_items WHERE orderID = :orderID",
-                { orderID: orderID }
-            );
-        }
-
-        function getUserOrders(userID) {
-            return queryExecute(
-                "SELECT * FROM orders WHERE userID = :userID",
-                { userID: userID }
-            );
-        }
-    </cfscript>
-
-</cfcomponent>
+    function getUserOrders(userID) {
+        return queryExecute(
+            "SELECT * FROM orders WHERE userID = :userID",
+            { userID: userID }
+        );
+    }
+}
