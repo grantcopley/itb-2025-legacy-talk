@@ -1,22 +1,31 @@
 class singleton {
+
+    property name="dataService" inject="DataService";
+
     function getUserInfo(userID) {
-        return queryExecute(
+        var result = queryExecute(
             "SELECT * FROM users WHERE id = :userID",
             { userID: userID }
         );
+
+        return dataService.toStruct(result);
     }
 
     function getOrderItems(orderID) {
-        return queryExecute(
+        var result = queryExecute(
             "SELECT * FROM order_items WHERE orderID = :orderID",
             { orderID: orderID }
         );
+
+        return dataService.toArray(result);
     }
 
     function getUserOrders(userID) {
-        return queryExecute(
+        var result = queryExecute(
             "SELECT * FROM orders WHERE userID = :userID",
             { userID: userID }
         );
+
+        return dataService.toArray(result);
     }
 }

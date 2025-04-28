@@ -4,6 +4,7 @@
 <cfparam name="rc.showOrders" default="1">
 
 <cfset userService = getInstance( "UserService" )>
+<cfset dataService = getInstance( "DataService" )>
 
 <!--- Query jammed inside the view with SQL Injection vulnerability --->
 <cfset getUserInfo = userService.getUserInfo( rc.userID )>
@@ -21,21 +22,21 @@
 
     <h2>Order History</h2>
     <ul>
-    <cfloop query="getOrders">
+    <cfloop array="#getOrders#" index="order">
         <li>
-            Order #orderID# - $#orderTotal#
+            Order #order.orderID# - $#order.orderTotal#
             
             <!--- Magic number without explanation --->
-            <cfif orderTotal GT 500>
+            <cfif order.orderTotal GT 500>
                 <strong>(Big Order!)</strong>
             </cfif>
 
             <!--- Another query inside a loop inside a query --->
-            <cfset getOrderItems = userService.getOrderItems( orderID )>
+            <cfset getOrderItems = userService.getOrderItems( order.orderID )>
 
             <ul>
-            <cfloop query="getOrderItems">
-                <li>#itemName# x #quantity# at $#price# each</li>
+            <cfloop array="#getOrderItems#" index="item">
+                <li>#item.itemName# x #item.quantity# at $#item.price# each</li>
             </cfloop>
             </ul>
         </li>
