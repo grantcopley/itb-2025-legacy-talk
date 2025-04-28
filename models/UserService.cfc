@@ -1,4 +1,4 @@
-component {
+component singleton {
     function getUserInfo(userID) {
         return queryExecute(
             "SELECT * FROM users WHERE id = :userID",
