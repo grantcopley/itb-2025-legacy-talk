@@ -9,10 +9,12 @@
 <!--- Query jammed inside the view with SQL Injection vulnerability --->
 <cfset getUserInfo = userService.getUserInfo( rc.userID )>
 
+<cfset VIP_LOYALTY_POINTS_THRESHOLD = 1000>
+
 <h1>Welcome, #getUserInfo.firstName# #getUserInfo.lastName#</h1>
 
 <!--- Magic number without explanation --->
-<cfif getUserInfo.loyaltyPoints GT 1000>
+<cfif getUserInfo.loyaltyPoints GT VIP_LOYALTY_POINTS_THRESHOLD>
     <div class="vip-badge">VIP Member</div>
 </cfif>
 
