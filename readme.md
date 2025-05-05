@@ -1,9 +1,8 @@
-# Legacy Code
-# Nightmares, Hellscapes, and Lessons Learned
+# Legacy Code: Nightmares, Hellscapes, and Lessons Learned
 
 ## Into The Box 2025
 
-This repository contains the code for the "Legacy Code: Nightmares, Hellscapes, and Lessons Learned" session at Into The Box 2025.
+This repository contains my code for the "Legacy Code: Nightmares, Hellscapes, and Lessons Learned" session at Into The Box 2025.
 
 After pulling down the repository, you can run the code using the following command using CommandBox:
 
@@ -23,3 +22,5 @@ box testbox run
 ```
 
 You can also run the tests in your browser by navigating to `http://localhost:55474/tests` after starting the server. This will give you a nice UI to see the results of the tests.
+
+
