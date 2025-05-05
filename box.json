@@ -1,6 +1,6 @@
 {
     "dependencies":{
-        "coldbox":"be",
+        "coldbox":"7.4.0",
         "testbox":"^6.3.1+15"
     },
     "installPaths":{
