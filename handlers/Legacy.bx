@@ -1,4 +1,4 @@
-component {
+class {
 
     property name="userService" inject="UserService";
 
