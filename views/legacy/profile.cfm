@@ -2,7 +2,7 @@
 
 <h1>Welcome, #prc.userInfo.firstName# #prc.userInfo.lastName#</h1>
 
-<cfif prc.userInfo.loyaltyPoints GT prc.VIP_LOYALTY_POINTS_THRESHOLD>
+<cfif prc.userInfo.loyaltyPoints GT prc.vipLoyaltyPointsThreshold>
     <div class="vip-badge">VIP Member</div>
 </cfif>
 

@@ -8,6 +8,6 @@ component {
 
         prc.orders = userService.getUserOrders( userID=rc.userID, include=["items"] );
         prc.userInfo = userService.getUserInfo( rc.userID );
-        prc.VIP_LOYALTY_POINTS_THRESHOLD = 1000;
+        prc.vipLoyaltyPointsThreshold = userService.VIP_LOYALTY_POINTS_THRESHOLD;
     }
 }

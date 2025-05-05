@@ -1,6 +1,8 @@
-class {
-
+class { 
+    
     property name="dataService" inject="DataService";
+    
+    this.VIP_LOYALTY_POINTS_THRESHOLD = 1000;
 
     function getUserInfo(userID) {
         var result = queryExecute(
