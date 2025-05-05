@@ -1,10 +1,8 @@
 <cfoutput>
 
-<cfset VIP_LOYALTY_POINTS_THRESHOLD = 1000>
-
 <h1>Welcome, #prc.userInfo.firstName# #prc.userInfo.lastName#</h1>
 
-<cfif prc.userInfo.loyaltyPoints GT VIP_LOYALTY_POINTS_THRESHOLD>
+<cfif prc.userInfo.loyaltyPoints GT prc.VIP_LOYALTY_POINTS_THRESHOLD>
     <div class="vip-badge">VIP Member</div>
 </cfif>
 
